@@ -16,7 +16,7 @@ Or with Yarn:
 `yarn add @izhank216/vscode-interaction-api`
 
 ## Usage
-import * as vscode from "vscode";
+`import * as vscode from "vscode";
 import {
     setupLogger,
     LoggerHelper,
@@ -58,5 +58,5 @@ export function activate(context: vscode.ExtensionContext) {
     );
     client.start();
     */
-}
+}`
 
