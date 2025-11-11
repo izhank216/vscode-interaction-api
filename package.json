@@ -1,0 +1,30 @@
+{
+  "name": "@izhank216/vscode-interaction-api",
+  "version": "1.0.2",
+  "description": "Unofficial interaction API for VSCode",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "yarn build"
+  },
+  "dependencies": {
+    "@vscode-logging/logger": "latest",
+    "@vscode/copilot-api": "latest",
+    "vscode-languageclient": "latest",
+    "vscode-notebook-renderer": "^0.0.1-security",
+    "wrappy": "^1.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.0",
+    "@types/vscode": "latest",
+    "@types/vscode-notebook-renderer": "latest",
+    "@types/vscode-webview": "latest",
+    "typescript": "latest"
+  },
+  "files": [
+    "out"
+  ],
+  "license": "MIT",
+  "author": "Izhan"
+}
