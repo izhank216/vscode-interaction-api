@@ -17,16 +17,16 @@ Or with Yarn:
 
 ## Usage
 `import * as vscode from "vscode";
-import {
+`import {
     setupLogger,
     LoggerHelper,
     WebviewHelper,
     CopilotHelper,
     LanguageClientHelper,
     version
-} from "@izhank216/vscode-interaction-api";
+} from "@izhank216/vscode-interaction-api";`
 
-export function activate(context: vscode.ExtensionContext) {
+`export function activate(context: vscode.ExtensionContext) {
     // Setup logger
     setupLogger(context);
 
@@ -58,4 +58,4 @@ export function activate(context: vscode.ExtensionContext) {
     );
     client.start();
     */`
-}
+}`
