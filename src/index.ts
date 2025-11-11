@@ -19,14 +19,17 @@ export function setupLogger(context: vscode.ExtensionContext) {
         logPath: context.logPath,
         logOutputChannel: vscode.window.createOutputChannel("VSCode Interaction API"),
         sourceLocationTracking: false,
-        logConsole: true
+        logConsole: true,
     });
 }
 
 /**
- * Webview helper
+ * Webview Helper
+ * Stores created panels for runtime management
  */
 export const WebviewHelper = {
+    panels: new Map<string, vscode.WebviewPanel>(),
+
     createPanel: (
         viewType: string,
         title: string,
@@ -34,23 +37,47 @@ export const WebviewHelper = {
         options?: vscode.WebviewPanelOptions & vscode.WebviewOptions
     ) => {
         const panel = vscode.window.createWebviewPanel(viewType, title, showOptions, options);
-        LoggerHelper?.info(`Webview panel created: ${viewType} - ${title}`);
+        WebviewHelper.panels.set(viewType, panel);
+        LoggerHelper?.info(`Webview panel created and stored: ${viewType} - ${title}`);
+
+        // Automatically dispose when closed
+        panel.onDidDispose(() => {
+            WebviewHelper.panels.delete(viewType);
+            LoggerHelper?.info(`Webview panel disposed: ${viewType}`);
+        });
+
         return panel;
+    },
+
+    getPanel: (viewType: string) => {
+        return WebviewHelper.panels.get(viewType);
     }
 };
 
 /**
- * Notebook helper
+ * Notebook Helper
+ * Stores registered notebook renderers for runtime use
  */
 export const NotebookHelper = {
+    renderers: new Map<string, any>(),
+
     registerRenderer: (rendererId: string, renderer: any) => {
+        if (NotebookHelper.renderers.has(rendererId)) {
+            LoggerHelper?.warn(`Renderer ${rendererId} already registered`);
+            return;
+        }
+
+        NotebookHelper.renderers.set(rendererId, renderer);
         LoggerHelper?.info(`Notebook renderer registered: ${rendererId}`);
-        // runtime registration logic goes here
+    },
+
+    getRenderer: (rendererId: string) => {
+        return NotebookHelper.renderers.get(rendererId);
     }
 };
 
 /**
- * Copilot helper
+ * Copilot Helper
  */
 export const CopilotHelper = {
     requestCompletion: async (
@@ -64,13 +91,11 @@ export const CopilotHelper = {
 
         const client = new CAPIClient(editorDetails, license);
 
-        // Safe single-run response handler
         const handleResponse = wrappy((response: any) => {
             LoggerHelper?.info("Copilot request completed successfully");
             return response;
         });
 
-        // Safe single-run error handler
         const handleError = wrappy((err: any) => {
             LoggerHelper?.error("Copilot request failed", err);
             throw err;
@@ -86,13 +111,12 @@ export const CopilotHelper = {
 };
 
 /**
- * Language Client helper
+ * Language Client Helper
  */
 export const LanguageClientHelper = {
     createClient: (name: string, serverOptions: ServerOptions, clientOptions: LanguageClientOptions) => {
         LoggerHelper?.info(`Language client created: ${name}`);
-        const client = new LanguageClient(name, serverOptions, clientOptions);
-        return client;
+        return new LanguageClient(name, serverOptions, clientOptions);
     }
 };
 
