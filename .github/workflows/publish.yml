@@ -15,23 +15,31 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # 2. Set up Node.js
+      # 2. Setup Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '22'          # Use Node.js 22
-          registry-url: 'https://registry.npmjs.org/'
+          node-version: '22'
 
       # 3. Install dependencies
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
-      # 4. Build the project
+      # 4. Build project
       - name: Build
         run: yarn build
 
-      # 5. Publish to npm
+      # 5. Configure npm with username/password/email
+      - name: Configure npm auth
+        run: |
+          echo "registry=https://registry.npmjs.org/" > ~/.npmrc
+          echo "_auth=$(echo -n "${NPM_USERNAME}:${NPM_PASSWORD}" | base64)" >> ~/.npmrc
+          echo "email=${NPM_EMAIL}" >> ~/.npmrc
+        env:
+          NPM_USERNAME: ${{ secrets.NPM_USERNAME }}
+          NPM_PASSWORD: ${{ secrets.NPM_PASSWORD }}
+          NPM_EMAIL: ${{ secrets.NPM_EMAIL }}
+
+      # 6. Publish
       - name: Publish to npm
         run: npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
