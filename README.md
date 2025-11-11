@@ -24,7 +24,7 @@ import {
     CopilotHelper,
     LanguageClientHelper,
     version
-} from "@izhank216/vscode-interaction-api";
+} from "@izhank216/vscode-interaction-api";`
 
 export function activate(context: vscode.ExtensionContext) {
     // Setup logger
