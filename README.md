@@ -15,47 +15,13 @@ Or with Yarn:
 
 `yarn add @izhank216/vscode-interaction-api`
 
-## Usage
-`import * as vscode from "vscode";
-`import {
-    setupLogger,
-    LoggerHelper,
-    WebviewHelper,
-    CopilotHelper,
-    LanguageClientHelper,
-    version
-} from "@izhank216/vscode-interaction-api";`
+## Build from source
+`git clone https://github.com/izhank216/vscode-interaction-api.git`
 
-`export function activate(context: vscode.ExtensionContext) {
-    // Setup logger
-    setupLogger(context);
+Then install dependencies:
 
-    LoggerHelper?.info(`VSCode Interaction API v${version} activated`);
+`yarn install`
 
-    // Example: Create a webview
-    const panel = WebviewHelper.createPanel(
-        "exampleView",
-        "Example Panel",
-        vscode.ViewColumn.One
-    );
+Then compile it:
 
-    // Example: Copilot request
-    /*
-    const response = await CopilotHelper.requestCompletion(
-        editorDetails,
-        copilotLicense,
-        fetchOptions
-    );
-    console.log(response);
-    */
-
-    // Example: Language client
-    /*
-    const client = LanguageClientHelper.createClient(
-        "exampleClient",
-        serverOptions,
-        clientOptions
-    );
-    client.start();
-    */`
-}`
+`yarn build`
