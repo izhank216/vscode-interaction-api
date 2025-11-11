@@ -8,12 +8,12 @@ Unofficial interaction API for VSCode.
 
 Install via npm:
 
-```bash
-npm install @izhank216/vscode-interaction-api
+
+`npm install @izhank216/vscode-interaction-api`
 
 Or with Yarn:
-```bash
-yarn add @izhank216/vscode-interaction-api
+
+`yarn add @izhank216/vscode-interaction-api`
 
 ## Usage
 import * as vscode from "vscode";
