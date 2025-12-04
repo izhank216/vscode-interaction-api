@@ -25,6 +25,11 @@
   "files": [
     "out"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/izhank216/vscode-interaction-api.git"
+  },
   "license": "MIT",
   "author": "Izhan"
 }
+
