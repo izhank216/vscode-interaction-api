@@ -1,0 +1,13 @@
+version: 2
+updates:
+  # For npm
+  - package-ecosystem: "npm"
+    directory: "/"       # location of package.json and package-lock.json
+    schedule:
+      interval: "weekly"
+
+  # For yarn
+  - package-ecosystem: "yarn"
+    directory: "/"       # location of package.json and yarn.lock
+    schedule:
+      interval: "weekly"
