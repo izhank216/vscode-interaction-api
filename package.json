@@ -16,7 +16,7 @@
     "wrappy": "^1.0.2"
   },
   "devDependencies": {
-    "@types/node": "^24.10.0",
+    "@types/node": "^25.0.2",
     "@types/vscode": "latest",
     "@types/vscode-notebook-renderer": "latest",
     "@types/vscode-webview": "latest",
