@@ -72,9 +72,9 @@
   integrity sha512-P42r5SPYeJKgMDYb5Ez9rjPlpnGEZ1eDFVjT0azxueaJ65iE259hpROmvSPUd80HAALn9/59L+CgcGLmwZcCmg==
 
 "@vscode/copilot-api@latest":
-  version "0.2.8"
-  resolved "https://registry.yarnpkg.com/@vscode/copilot-api/-/copilot-api-0.2.8.tgz#6cabe6fa14867fb8532bd05a069b619461832c40"
-  integrity sha512-V8wq2ZaKTPmTUdzI5vuop3Y39V/hWadcaAxiJcK7kiTmfwL13DbXa4us0HcWouh7aFy9O30IJ+1gMYl/zP/8Ng==
+  version "0.2.9"
+  resolved "https://registry.yarnpkg.com/@vscode/copilot-api/-/copilot-api-0.2.9.tgz#18f887c66d3256d332a547c1e3c8e39b4209f20e"
+  integrity sha512-3ueQTTJlaYMN2BygL/vT+Izde8uS6yThQYiBJMMNtGqy1w3VFvjJwlEWt+MzXXOrESnDMi7Q72eJCPtE7r4fWA==
 
 async@^3.2.3:
   version "3.2.6"
